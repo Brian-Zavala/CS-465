@@ -1,4 +1,3 @@
-//GET travel view
 const trips = [
   {
     name: "Gale Reef",
