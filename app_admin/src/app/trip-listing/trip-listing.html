@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col">
+            <h2>Travlr Getaways Trip Management</h2>
+        </div>
+        <div class="col text-end">
+            <button class="btn btn-primary" (click)="addTrip()">Add Trip</button>
+        </div>
+    </div>
+
+    @if (message) {
+        <div class="alert alert-info">{{ message }}</div>
+    }
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @for (trip of trips; track trip.code) {
+            <div class="col">
+                <app-trip-card [trip]="trip"></app-trip-card>
+            </div>
+        } @empty {
+            @if (!message) {
+                <div class="col">
+                    <p class="text-muted">Loading trips...</p>
+                </div>
+            }
+        }
+    </div>
+</div>
