@@ -3,15 +3,12 @@ const host = process.env.DB_HOST || '127.0.0.1';
 const dbURI = `mongodb://${host}/travlr`;
 const readLine = require('readline');
 
-// Build the connection string
 mongoose.set('strictQuery', false);
 
-// Connection logic
 const connect = () => {
     setTimeout(() => mongoose.connect(dbURI), 1000);
 }
 
-// Connection events
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${dbURI}`);
 });
@@ -24,7 +21,6 @@ mongoose.connection.on('disconnected', () => {
     console.log('Mongoose disconnected');
 });
 
-// Shutdown handling
 if (process.platform === 'win32') {
     const rl = readLine.createInterface({
         input: process.stdin,
@@ -42,7 +38,6 @@ const gracefulShutdown = (msg, callback) => {
     });
 };
 
-// Shutdown signals
 process.once('SIGUSR2', () => {
     gracefulShutdown('nodemon restart', () => {
         process.kill(process.pid, 'SIGUSR2');
@@ -61,6 +56,6 @@ process.on('SIGTERM', () => {
     });
 });
 
-// Bring in schemas and models
 connect();
 require('./trips');
+require('./users');

@@ -3,7 +3,7 @@
         <div class="col">
             <h2>Travlr Getaways Trip Management</h2>
         </div>
-        <div class="col text-end">
+        <div class="col text-end" *ngIf="isLoggedIn()">
             <button class="btn btn-primary" (click)="addTrip()">Add Trip</button>
         </div>
     </div>
@@ -13,7 +13,7 @@
     }
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
-        @for (trip of trips; track trip.code) {
+        @for (trip of trips; track $index) {
             <div class="col">
                 <app-trip-card [trip]="trip"></app-trip-card>
             </div>

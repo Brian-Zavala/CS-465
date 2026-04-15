@@ -11,7 +11,7 @@
         </p>
         <p class="card-text text-truncate" [title]="trip.description">{{ trip.description }}</p>
     </div>
-    <div class="card-footer bg-transparent border-top-0 pb-3 text-center">
+    <div class="card-footer bg-transparent border-top-0 pb-3 text-center" *ngIf="isLoggedIn()">
         <button (click)="editTrip(trip)" class="btn btn-sm btn-outline-info me-2">Edit</button>
         <button (click)="deleteTrip(trip)" class="btn btn-sm btn-outline-danger">Delete</button>
     </div>
