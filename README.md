@@ -48,7 +48,3 @@ I used **GET**, **POST**, and **PUT** methods mapped to specific API endpoints f
 | API Testing | Postman |
 
 ---
-
-## Reflection
-
-Building this project on the **MEAN stack** gave me a solid understanding of how the pieces of a modern web application connect, from the database layer all the way up to the UI. Working through RESTful API design, token-based authentication, and component-driven frontend architecture reinforced skills that are directly applicable to production development work.
