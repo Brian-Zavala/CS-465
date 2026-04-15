@@ -3,7 +3,7 @@
         <div class="col">
             <h2>Travlr Getaways Trip Management</h2>
         </div>
-        <div class="col text-end">
+        <div class="col text-end" *ngIf="isLoggedIn()">
             <button class="btn btn-primary" (click)="addTrip()">Add Trip</button>
         </div>
     </div>

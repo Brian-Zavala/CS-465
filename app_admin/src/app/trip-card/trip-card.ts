@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Trip } from '../models/trip';
 import { TripDataService } from '../services/trip-data';
+import { AuthenticationService } from '../services/authentication';
 
 @Component({
   selector: 'app-trip-card',
@@ -16,10 +17,15 @@ export class TripCardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private tripDataService: TripDataService
+    private tripDataService: TripDataService,
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn();
   }
 
   public editTrip(trip: Trip): void {
@@ -33,7 +39,7 @@ export class TripCardComponent implements OnInit {
       this.tripDataService.deleteTrip(trip.code)
         .then(() => {
           console.log(`Trip ${trip.code} deleted`);
-          // Note: In a real app, we'd emit an event to the parent to refresh the list
+          // Refresh the page to show updated list after deletion
           window.location.reload(); 
         })
         .catch(err => console.error(err));
